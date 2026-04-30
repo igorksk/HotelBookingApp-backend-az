@@ -1,6 +1,7 @@
 using HotelBookingApp.API.Data;
 using HotelBookingApp.API.Services;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.WebRequestMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,8 @@ builder.Services.AddSwaggerGen(c =>
 // CORS – allow the React dev server and production static-web-app URL
 var allowedOrigins = builder.Configuration
     .GetSection("AllowedOrigins")
-    .Get<string[]>() ?? ["http://localhost:5173/"];
+    .Get<string[]>() ?? ["http://localhost:5173/",
+        "https://calm-sea-02ea05a0f.7.azurestaticapps.net/"];
 
 builder.Services.AddCors(opt =>
 {
